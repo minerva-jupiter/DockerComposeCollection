@@ -1,0 +1,45 @@
+services:
+  minecraft:
+    image: itzg/minecraft-bedrock-server
+    container_name: minecraft
+    environment:
+      EULA: TRUE
+      SERVER_NAME: Tetsu's
+      LEVEL_NAME: 2024-9-3
+      GAMEMODE: survival
+      FORCE_GAMEMODE: true
+      DIFFICULTY: normal
+      ALLOW_CHEATS: true
+      ALLOW_LIST: false 
+      ONLINE_MODE: true
+      TZ: Asia/Tokyo
+    ports:
+      - 19132:19132/udp
+    volumes:
+      - /minecraft:/data
+    stdin_open: true
+    tty: true
+    logging:
+      driver:loki
+      options:
+        loki-url:http://192.168.1.x:3100/loki/api/v1/push
+
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    ports:
+      - 3100:3100
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana:/var/lib/grafana
+
+volumes:
+  minecraft:
+  grafana:
+#volumeの場所
+#/var/lib/docker/volumes/
