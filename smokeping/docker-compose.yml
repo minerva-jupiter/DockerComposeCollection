@@ -12,5 +12,5 @@ services:
       - /home/tetsu/smokepingdata/config:/config
       - /home/tetsu/smokepingdata/data:/data
     ports:
-      - 80:80
+      - 8081:80
     restart: unless-stopped
