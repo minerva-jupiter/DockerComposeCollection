@@ -7,11 +7,11 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
-      - APP_URL=https://bookstack.example.com
+      - APP_URL=https://bookstack.minervajuppiter.com
       - DB_HOST=bookstack_db
       - DB_PORT=3306
       - DB_USER=bookstack
-      - DB_PASS=<yourdbpass>
+      - DB_PASS=p@ssw0rd
       - DB_DATABASE=bookstackapp
     volumes:
       - /path/to/bookstack_app_data:/config
@@ -28,10 +28,10 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
-      - MYSQL_ROOT_PASSWORD=<yourdbpass>
+      - MYSQL_ROOT_PASSWORD=p@ssw0rd
       - MYSQL_DATABASE=bookstackapp
       - MYSQL_USER=bookstack
-      - MYSQL_PASSWORD=<yourdbpass>
+      - MYSQL_PASSWORD=p@ssw0rd
     volumes:
       - /path/to/bookstack_db_data:/config
     restart: unless-stopped
