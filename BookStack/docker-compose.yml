@@ -14,7 +14,7 @@ services:
       - DB_PASS=p@ssw0rd
       - DB_DATABASE=bookstackapp
     volumes:
-      - /home/bookstacks/config
+      - /home/docker/bookstacks/config
     ports:
       - 6875:80
     restart: unless-stopped
