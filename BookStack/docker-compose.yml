@@ -6,15 +6,15 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
-      - APP_URL=https://bookstack.minervajuppiter.com
+      - TZ=Asia/Tokyo
+      - APP_URL=https://bookstack.minervajuppiter.net
       - DB_HOST=bookstack_db
       - DB_PORT=3306
       - DB_USER=bookstack
       - DB_PASS=p@ssw0rd
       - DB_DATABASE=bookstackapp
     volumes:
-      - /path/to/bookstack_app_data:/config
+      - /home/bookstacks/config
     ports:
       - 6875:80
     restart: unless-stopped
