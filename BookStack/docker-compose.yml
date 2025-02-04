@@ -14,7 +14,7 @@ services:
       - DB_PASS=p@ssw0rd
       - DB_DATABASE=bookstackapp
     volumes:
-      - /home/docker/bookstacks/config
+      - ./main/config
     ports:
       - 6875:80
     restart: unless-stopped
@@ -27,11 +27,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=Asia/Tokyo
       - MYSQL_ROOT_PASSWORD=p@ssw0rd
       - MYSQL_DATABASE=bookstackapp
       - MYSQL_USER=bookstack
       - MYSQL_PASSWORD=p@ssw0rd
     volumes:
-      - /path/to/bookstack_db_data:/config
+      - ./db/config
     restart: unless-stopped
