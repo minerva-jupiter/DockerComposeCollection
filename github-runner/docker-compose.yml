@@ -1,22 +1,23 @@
-version: '3.8'
-
+version: '2.3'
 services:
-  runner:
+  worker:
     image: myoung34/github-runner:latest
     environment:
-      ACCESS_TOKEN: ${PERSONAL_ACCESS_TOKEN}
+      REPO_URL: https://github.com/example/repo
+      RUNNER_NAME: example-name
+      RUNNER_TOKEN: someGithubTokenHere
       RUNNER_WORKDIR: /tmp/runner/work
-      RUNNER_SCOPE: org
-      ORG_NAME: <GITHUB_ORG_NAME>
-      LABELS: self-hosted,Linux
-    restart: always
+      CONFIGURED_ACTIONS_RUNNER_FILES_DIR: /runner/data # Required for persistence
+      RUNNER_GROUP: my-group # github enterprise only
+      RUNNER_SCOPE: 'repo'
+      LABELS: linux,x64,gpu
     security_opt:
       # needed on SELinux systems to allow docker container to manage other docker containers
       - label:disable
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/runner/data:/runner/data' # required for persistence
+      - '/tmp/runner:/tmp/runner'
       # note: a quirk of docker-in-docker is that this path
       # needs to be the same path on host and inside the container,
       # docker mgmt cmds run outside of docker but expect the paths from within
-    deploy:
-      replicas: 10
