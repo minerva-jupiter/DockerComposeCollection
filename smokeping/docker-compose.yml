@@ -7,7 +7,6 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
-      - MASTER_URL=http://60.130.0.39:8081/smokeping/ #optional
     volumes:
       - /home/tetsu/smokepingdata/config:/config
       - /home/tetsu/smokepingdata/data:/data
